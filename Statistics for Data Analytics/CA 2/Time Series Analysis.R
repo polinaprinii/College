@@ -22,5 +22,19 @@ class(timedata.ts)
 start(timedata.ts)
 end(timedata.ts)
 
-# Plotting the timeseries.
+# Plotting the time-series.
 plot(timedata.ts)
+autoplot(timedata.ts)
+monthplot(timedata.ts)
+
+# Importing ggplot2 library for further analysis.
+library(fpp2)
+
+# Running a seasonal plot to evaluate if any seasonality is present in trend.
+ggseasonplot(timedata.ts, year.labels=TRUE) +
+  ylab("$ Billion") +
+  ggtitle("Season plot: Retail Sales")
+
+# Performing seasonal decomposition to evaluate the time series by components.
+decom <- decompose(timedata.ts, type = "multiplicative")
+plot(decom)
