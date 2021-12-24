@@ -1,9 +1,9 @@
 # Importing the eComm_US.csv file into RStudio.
  
-timedata = read.csv("/Users/polinaprinii/Documents/Database & Analytics Programming/eComm_US.csv",
+timedata = read.csv("/Users/polinaprinii/Documents/Statistics/eComm_US.csv",
                     header = TRUE, stringsAsFactors = FALSE)
 
-# Now we check the class of our timedata variable.
+# Now we check the class of our time data variable.
 class(timedata)
 
 # Now we check the columns of the data-frame.
