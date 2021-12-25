@@ -1,3 +1,7 @@
+# Importing Libraries:
+library(ggplot2)
+library(fpp2)
+
 # Importing the eComm_US.csv file into RStudio.
  
 timedata = read.csv("/Users/polinaprinii/Documents/Statistics/eComm_US.csv",
@@ -24,16 +28,16 @@ end(timedata.ts)
 
 # Plotting the time-series.
 plot(timedata.ts)
-autoplot(timedata.ts)
+autoplot(timedata.ts, main ="eComm_US Raw Plot")
 monthplot(timedata.ts)
 
-# Importing ggplot2 library for further analysis.
-library(fpp2)
+# Smoothing the time series.
+autoplot(ma(timedata.ts, 3), main = "Smoothed eComm_US Plot")
 
 # Running a seasonal plot to evaluate if any seasonality is present in trend.
 ggseasonplot(timedata.ts, year.labels=TRUE) +
   ylab("$ Billion") +
-  ggtitle("Season plot: Retail Sales")
+  ggtitle("Seasonal plot: Retail Sales")
 
 # Performing seasonal decomposition to evaluate the time series by components.
 decom <- decompose(timedata.ts, type = "multiplicative")
