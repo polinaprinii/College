@@ -1,6 +1,7 @@
 # Importing Libraries:
 library(ggplot2)
 library(fpp2)
+library(ggfortify)
 
 # Importing the eComm_US.csv file into RStudio.
  
@@ -41,4 +42,4 @@ ggseasonplot(timedata.ts, year.labels=TRUE) +
 
 # Performing seasonal decomposition to evaluate the time series by components.
 decom <- decompose(timedata.ts, type = "multiplicative")
-plot(decom)
+autoplot(decom, main = "Seasonal Decomposition eComm_US Plot")
