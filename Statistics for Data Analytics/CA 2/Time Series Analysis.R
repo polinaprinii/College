@@ -58,5 +58,7 @@ summary(fcast2)
 autoplot(fcast2, ts.colour = 'violetred4', 
          predict.linetype = 'dashed') + 
   labs(x ="Year", y = "$ in Billion", title = "Seasonal Naive Model")
+
+# Random Walk Forecast
   
           
