@@ -43,3 +43,20 @@ ggseasonplot(timedata.ts, year.labels=TRUE) +
 # Performing seasonal decomposition to evaluate the time series by components.
 decom <- decompose(timedata.ts, type = "multiplicative")
 autoplot(decom, main = "Seasonal Decomposition eComm_US Plot")
+
+# Simple Time Series Models
+
+# Naive model:
+fcast1 <- naive(timedata.ts, h=3)
+summary(fcast1)
+autoplot(fcast1, ts.colour = 'violetred4') + 
+  labs(x ="Year", y = "$ in Billion", title = "Naive Model")
+
+# Seasonal Naive model:
+fcast2 <- snaive(timedata.ts, h=3)
+summary(fcast2)
+autoplot(fcast2, ts.colour = 'violetred4', 
+         predict.linetype = 'dashed') + 
+  labs(x ="Year", y = "$ in Billion", title = "Seasonal Naive Model")
+  
+          
