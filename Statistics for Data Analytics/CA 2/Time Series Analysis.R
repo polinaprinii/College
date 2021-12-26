@@ -30,7 +30,7 @@ end(timedata.ts)
 # Checking the frequency.
 frequency(timedata.ts)
 
-# Printing first 6 rows of the time series.
+# Printing first 3 rows of the time series.
 head(timedata.ts)
 
 # Plotting the time-series.
