@@ -2,26 +2,34 @@
 library(ggplot2)
 library(fpp2)
 library(ggfortify)
+library(tsbox)
 
 # Importing the eComm_US.csv file into RStudio.
  
 timedata = read.csv("/Users/polinaprinii/Documents/Statistics/eComm_US.csv",
                     header = TRUE, stringsAsFactors = FALSE)
 
-# Now we check the class of our time data variable.
+# Now we check the class and structure of our time data variable.
 class(timedata)
+str(timedata)
 
-# Now we check the columns of the data-frame.
-colnames(timedata)
+# Converting DATE column from chr to date.
+timedata$DATE <- as.Date(timedata$DATE)
 
-# Now we print the first 6 rows.
-head(timedata)
+# Checking structure of DATE column.
+str(timedata$DATE)
+# Checking structure of the whole data frame once again.
+str(timedata)
 
-# Reading the data-frame as a time series object.
-timedata.ts = ts(data=timedata['ECOMNSA'], frequency = 4, start = c(1999, 4))
+# Converting the data frame to a ts object.
+timedata.ts <- ts_ts(ts_long(timedata))
 
-# Checking class of the timedata.ts variable.
+# Below initial understanging on how to read a df as a ts, which was incorrect.
+#timedata.ts = ts(data=timedata['ECOMNSA'], frequency = 4, start = c(1999, 4))
+
+# Checking class and structure of the timedata.ts variable.
 class(timedata.ts)
+str(timedata.ts)
 
 # Checking the start and enf of the time series.
 start(timedata.ts)
@@ -68,5 +76,24 @@ autoplot(fcast2, ts.colour = 'violetred4',
 # Random Walk Forecast
 fcast3 <- rwf(timedata.ts, h=3, drift = TRUE)
 summary(fcast3)
-autoplot(fcast3)
-          
+autoplot(fcast3, ts.colour = 'orchid4',) +
+  labs(x ="Year", y = "$ in Billion",
+       title = "Random Walk Forest - Naive Model")
+
+# Checking internal structure of the time series.
+str(timedata.ts)
+
+# Exponential smoothing, both additive and multiplicative.
+ts <- window(timedata.ts, start = c(1999, 4))
+expo1 <- hw(timedata.ts, seasonal = 'additive')
+expo2 <- hw(timedata.ts, seasonal = 'multiplicative')
+
+autoplot(ts) +
+  autolayer(expo1, series ="Holt-Winters Additive Forecast", PI = FALSE) +
+  autolayer(expo2, series = "Holt-Winters Multiplicative Forecast", PI = FALSE) +
+  xlab("Year") +
+  ylab("$ in Billion") +
+  ggtitle("Retail Sales in the United States") +
+  guides(colour = guide_legend(title = "Forecasts"))
+  
+
