@@ -2,7 +2,7 @@
 library(ggplot2)
 library(fpp2)
 library(tsbox)
-
+library(forecast)
 
 # Importing the eComm_US.csv file into RStudio.
 timedata = read.csv("/Users/polinaprinii/Documents/Statistics/eComm_US.csv",
@@ -84,9 +84,11 @@ autoplot(fcast3, ts.colour = 'orchid4',) +
 ts <- window(timedata.ts, start = c(1999, 4), end = c(2021, 2))
 hw1 <- hw(ts, h = 3, seasonal = c("additive"))
 summary(hw1)
+autoplot(hw1)
 
 hw2 <- hw(ts, h = 3, seasonal = c("multiplicative"))
 summary(hw2)
+autoplot(hw2)
 
 autoplot(ts,) +
   autolayer(hw1, series = "Additive") +
@@ -95,4 +97,14 @@ autoplot(ts,) +
   ylab("$ in Billions") +
   ggtitle("Holt-Winters eComm Forecasts") +
   guides(colour = guide_legend(title = "Forecasts"))
+
+# Applying the ets function to confirm the fit of the Holt-Winters model.
+autofit <- ets(timedata.ts, model = "ZZZ")
+summary(autofit)
+autoplot(autofit)
+
+autofit %>% forecast(h=3) %>%
+  autoplot() +
+  ylab("$ Retail Sales (billions)") +
+  xlab("Year")
 
