@@ -86,7 +86,7 @@ hw1 <- hw(ts, h = 3, seasonal = c("additive"))
 summary(hw1)
 autoplot(hw1)
 
-hw2 <- hw(ts, h = 3, seasonal = c("multiplicative"))
+hw2 <- hw(ts, h = 3, seasonal = c("multiplicative"), initial = c("optimal"))
 summary(hw2)
 autoplot(hw2)
 
@@ -107,3 +107,4 @@ autofit %>% forecast(h=3) %>%
   autoplot() +
   ylab("$ Retail Sales (billions)") +
   xlab("Year")
+
