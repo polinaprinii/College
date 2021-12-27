@@ -1,11 +1,10 @@
 # Importing Libraries:
 library(ggplot2)
 library(fpp2)
-library(ggfortify)
 library(tsbox)
 
+
 # Importing the eComm_US.csv file into RStudio.
- 
 timedata = read.csv("/Users/polinaprinii/Documents/Statistics/eComm_US.csv",
                     header = TRUE, stringsAsFactors = FALSE)
 
@@ -30,8 +29,9 @@ timedata.ts <- ts_ts(ts_long(timedata))
 # Checking class and structure of the timedata.ts variable.
 class(timedata.ts)
 str(timedata.ts)
+head(timedata.ts)
 
-# Checking the start and enf of the time series.
+# Checking the start and end of the time series.
 start(timedata.ts)
 end(timedata.ts)
 
@@ -80,20 +80,19 @@ autoplot(fcast3, ts.colour = 'orchid4',) +
   labs(x ="Year", y = "$ in Billion",
        title = "Random Walk Forest - Naive Model")
 
-# Checking internal structure of the time series.
-str(timedata.ts)
-
 # Exponential smoothing, both additive and multiplicative.
-ts <- window(timedata.ts, start = c(1999, 4))
-expo1 <- hw(timedata.ts, seasonal = 'additive')
-expo2 <- hw(timedata.ts, seasonal = 'multiplicative')
+ts <- window(timedata.ts, start = c(1999, 4), end = c(2021, 2))
+hw1 <- hw(ts, h = 3, seasonal = c("additive"))
+summary(hw1)
 
-autoplot(ts) +
-  autolayer(expo1, series ="Holt-Winters Additive Forecast", PI = FALSE) +
-  autolayer(expo2, series = "Holt-Winters Multiplicative Forecast", PI = FALSE) +
+hw2 <- hw(ts, h = 3, seasonal = c("multiplicative"))
+summary(hw2)
+
+autoplot(ts,) +
+  autolayer(hw1, series = "Additive") +
+  autolayer(hw2, series = "Multiplicative") +
   xlab("Year") +
-  ylab("$ in Billion") +
-  ggtitle("Retail Sales in the United States") +
+  ylab("$ in Billions") +
+  ggtitle("Holt-Winters eComm Forecasts") +
   guides(colour = guide_legend(title = "Forecasts"))
-  
 
