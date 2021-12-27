@@ -111,3 +111,23 @@ autofit %>% forecast(h=3) %>%
   ylab("$ Retail Sales (billions)") +
   xlab("Year")
 
+# Applying an ARIMA Model to a seasonal time series.
+# First we plot the time series.
+plot(timedata.ts)
+
+# Second we check the order of differencing required.
+ndiffs(timedata.ts)
+
+# Read the ACF and PACF for the time series.
+acf(timedata.ts)
+Pacf(timedata.ts)
+
+# Third we plot the differenced time series.
+dtimeseries <- diff(timedata.ts, lag = 2, differences = 1)
+autoplot(dtimeseries, 
+         main = "eComm_US Time Series - Differecing (lag=2, differences=1)")
+
+# Read the ACF and PACF of the difference time series.
+acf(dtimeseries)
+Pacf(dtimeseries)
+checkresiduals(dtimeseries)
