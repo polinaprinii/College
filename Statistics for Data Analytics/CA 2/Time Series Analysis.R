@@ -107,4 +107,3 @@ autofit %>% forecast(h=3) %>%
   autoplot() +
   ylab("$ Retail Sales (billions)") +
   xlab("Year")
-
