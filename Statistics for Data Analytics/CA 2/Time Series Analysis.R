@@ -86,10 +86,12 @@ hw1 <- hw(ts, h = 3, seasonal = c("additive"))
 summary(hw1)
 autoplot(hw1)
 
-hw2 <- hw(ts, h = 3, seasonal = c("multiplicative"), initial = c("optimal"))
+hw2 <- hw(ts, h = 3, seasonal = c("multiplicative"))
 summary(hw2)
+checkresiduals(hw2)
 autoplot(hw2)
 
+# Plotting the Holt-Winters Models.
 autoplot(ts,) +
   autolayer(hw1, series = "Additive") +
   autolayer(hw2, series = "Multiplicative") +
@@ -101,6 +103,7 @@ autoplot(ts,) +
 # Applying the ets function to confirm the fit of the Holt-Winters model.
 autofit <- ets(timedata.ts, model = "ZZZ")
 summary(autofit)
+checkresiduals(autofit)
 autoplot(autofit)
 
 autofit %>% forecast(h=3) %>%
