@@ -69,6 +69,8 @@ autoplot(fcast1, ts.colour = 'violetred4') +
 # Seasonal Naive model:
 fcast2 <- snaive(timedata.ts, h=3)
 summary(fcast2)
+accuracy(fcast2)
+checkresiduals(fcast2)
 autoplot(fcast2, ts.colour = 'violetred4', 
          predict.linetype = 'dashed') + 
   labs(x ="Year", y = "$ in Billion", title = "Seasonal Naive Model")
@@ -104,6 +106,7 @@ autoplot(ts,) +
 autofit <- ets(timedata.ts, model = "ZZZ")
 summary(autofit)
 checkresiduals(autofit)
+accuracy(autofit)
 autoplot(autofit)
 
 autofit %>% forecast(h=3) %>%
@@ -131,3 +134,19 @@ autoplot(dtimeseries,
 acf(dtimeseries)
 Pacf(dtimeseries)
 checkresiduals(dtimeseries)
+
+# Fitting ARIMA Model (0,1,1)
+Ats <- arima(timedata.ts, order = c(0, 1, 1))
+Ats
+
+# Checking residuals:
+qqnorm(Ats$residuals)
+qqline(Ats$residuals)
+Box.test(Ats$residuals, type = "Ljung-Box")
+
+# Evaluating Auto ARIMA selection:
+auto.arima(timedata.ts)
+aTS <- auto.arima(timedata.ts, stepwise = FALSE)
+aTS
+accuracy(aTS)
+forecast(aTS, h=3)
