@@ -47,16 +47,15 @@ Write a function that takes a list of numbers. The function decides whether or n
 is inside the list and returns an appropriate Boolean.
 """
 
-l = [1, 2, 3, 4, 5]
+numberlist = [1, 2, 3, 4, 5]
 var = input("Enter a number to see if it is the list or not.")
 
+
 def listcheck():
-    for var in l:
+    if var in numberlist:
+        print("Yes the number provided is in our list.", "\n")
 
-        if var in l:
-            print("Yes the number provided is in our list.", "\n")
-
-        else:
-            print("No the number provided is not in our list")
+    else:
+        print("No the number provided is not in our list")
 
 listcheck()
