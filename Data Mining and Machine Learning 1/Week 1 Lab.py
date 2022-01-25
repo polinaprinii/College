@@ -46,11 +46,13 @@ Exercise 4
 Write a function that takes a list of numbers. The function decides whether or not the given number 
 is inside the list and returns an appropriate Boolean.
 """
-
+# Creating a list.
 numberlist = [1, 2, 3, 4, 5]
+
+# Drafting input variable.
 var = input("Enter a number to see if it is the list or not.")
 
-
+# Function to cross-check against the list to return a true or false.
 def listcheck():
     if var in numberlist:
         print("Yes the number provided is in our list.", "\n")
@@ -58,4 +60,5 @@ def listcheck():
     else:
         print("No the number provided is not in our list")
 
+# Enabling function.
 listcheck()
