@@ -73,18 +73,18 @@ import math
 # Creating list for the loop.
 looplist = [8, 9, 10, 11, 13, 81, 101, 100, 94]
 
-def squareprime():
-    for i in looplist:
-        if i > 1:
-            for j in range(2, int(i/2)+1):
 
-                if (i % j) == 0:
-                    print(i, " is not a prime number")
-                    break
-                else:
-                    print(i, " is a prime number, here is he number squared: ", i * i )
+for i in looplist:
+    if i > 1:
+        for j in range(2, int(i/2)+1):
 
+            if (i % j) == 0:
+                print(i, " is not a prime number")
+                break
             else:
-                print(i, "is not a prime number.")
+                print(i, " is a prime number, here is he number squared: ", i * i )
+                break
 
-squareprime()
+        else:
+            print(i, "is not a prime number.")
+            break
