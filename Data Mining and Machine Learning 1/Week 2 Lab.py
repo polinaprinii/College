@@ -40,7 +40,9 @@ for line in textfile:
 for key in list(frequency.keys()):
     print(key, ":", frequency[key])
 
-
+"""
+Write most- and least-frequent words (100) in a file.
+"""
 
 
 
