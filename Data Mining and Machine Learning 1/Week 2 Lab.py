@@ -46,13 +46,22 @@ textfile.close()
 """
 2)
 Write most- and least-frequent words (100) in a file.
-
 """
+
 from collections import Counter
 
+# Setting Counter to our dictionary and assigning all to a variable.
 counts = Counter(frequency_dict)
+
+# Searching for the most common/frequent word.
 top_word = counts.most_common(1)
+
+"""Searching for least common/frequent word.
+We must use indices as Counter does not provide a least common clause.
+Instead we specify to look at the end of the dict
+"""
 least_word = counts.most_common()[-1]
+
 print("The most frequent word is ", top_word, "\n")
 print("The least frequent word is ", least_word, "\n")
 
