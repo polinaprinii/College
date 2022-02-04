@@ -1,5 +1,4 @@
 # Tokeniser Problem
-
 """
 1)
 Take a text file (uploaded to Moodle) as an input of your program. 
@@ -47,7 +46,6 @@ textfile.close()
 2)
 Write most- and least-frequent words (100) in a file.
 """
-
 from collections import Counter
 
 # Setting Counter to our dictionary and assigning all to a variable.
@@ -79,3 +77,15 @@ print('Number of words in our text file is: ', len(words), "\n")
 unique_words = set(words) # Using set() to convert our dictionary of multiple items to one single variable of distinct elements.
 unique_word_count = len(unique_words)
 print("The number of unique words in the text file is: ", unique_word_count, "\n")
+
+"""
+Perform tokenisation (i.e separating punctuation from word) on the input text. 
+Write the tokenised text in an output file [for tokenisation use the standard English punctuation list]
+"""
+
+import nltk
+nltk.download()
+
+word_data = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en", "r")
+nltk_tokens = nltk.word_tokenize(word_data)
+print (nltk_tokens)
