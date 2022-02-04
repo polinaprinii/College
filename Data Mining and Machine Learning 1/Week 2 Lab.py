@@ -65,3 +65,17 @@ least_word = counts.most_common()[-1]
 print("The most frequent word is ", top_word, "\n")
 print("The least frequent word is ", least_word, "\n")
 
+"""
+Count total number of words and total number of unique words in the corpus.
+[corpus is a collection of text; here, set of sentences of the text file is referred as corpus].
+"""
+file = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en", "rt")
+data = file.read()
+words = data.split()
+
+print('Number of words in our text file is: ', len(words), "\n")
+
+# Finding number of unique words within the text file. 
+unique_words = set(words)
+unique_word_count = len(unique_words)
+print(unique_word_count)
