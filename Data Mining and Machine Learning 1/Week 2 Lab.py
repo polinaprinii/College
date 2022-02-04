@@ -75,7 +75,7 @@ words = data.split()
 
 print('Number of words in our text file is: ', len(words), "\n")
 
-# Finding number of unique words within the text file. 
-unique_words = set(words)
+# Finding number of unique words within the text file.
+unique_words = set(words) # Using set() to convert our dictionary of multiple items to one single variable of distinct elements.
 unique_word_count = len(unique_words)
-print(unique_word_count)
+print("The number of unique words in the text file is: ", unique_word_count, "\n")
