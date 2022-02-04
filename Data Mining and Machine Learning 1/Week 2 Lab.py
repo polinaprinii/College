@@ -1,6 +1,7 @@
 # Tokeniser Problem
 
 """
+1)
 Take a text file (uploaded to Moodle) as an input of your program. 
 Read its content. Write frequency of the words of the text in a file. 
 Use python’s dictionary data structure for storing frequencies of the words. 
@@ -8,7 +9,7 @@ Use python’s dictionary data structure for storing frequencies of the words.
 """
 
 # Creating an empty dictionary which will hold our word frequencies.
-frequency = {}
+frequency_dict = {}
 
 # Importing text file into PyCharm
 textfile = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en", "r")
@@ -29,22 +30,52 @@ for line in textfile:
     # Iterate over each word in line
     for word in words:
         # Check if the word is already in dictionary
-        if word in frequency:
+        if word in frequency_dict:
             # Increment count of word by 1
-            frequency[word] = frequency[word] + 1
+            frequency_dict[word] = frequency_dict[word] + 1
         else:
             # Add the word to dictionary with count 1
-            frequency[word] = 1
+            frequency_dict[word] = 1
 
 # Print the contents of dictionary
-for key in list(frequency.keys()):
-    print(key, ":", frequency[key])
+for key in list(frequency_dict.keys()):
+    print(key, ":", frequency_dict[key])
+
+textfile.close()
 
 """
+2)
 Write most- and least-frequent words (100) in a file.
 """
+count = 0
+word = ""
+maxCount = 0
+words = []
 
+# Opens a file in read mode
+file = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en copy", "r")
 
+# Gets each line till end of file is reached
+for line in file:
+    # Splits each line into words
+    string = line.lower().replace(',', '').replace('.', '').replace(':', '').split(" ")
+    # Adding all words generated in previous step into words
+    for s in string:
+        words.append(s)
 
+    # Determine the most repeated word in a file
+for i in range(0, len(words)):
+    count = 1
+    # Count each word in the file and store it in variable count
+    for j in range(i + 1, len(words)):
+        if (words[i] == words[j]):
+            count = count + 1
 
+    # If maxCount is less than count then store value of count in maxCount
+    # and corresponding word to variable word
+    if (count > maxCount):
+        maxCount = count
+        word = words[i]
+
+print("Most repeated word: " + word)
 
