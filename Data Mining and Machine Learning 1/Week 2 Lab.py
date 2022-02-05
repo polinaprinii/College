@@ -89,7 +89,14 @@ import nltk
 
 file_content = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en").read()
 tokens = nltk.word_tokenize(file_content)
-print(tokens, "\n")
+
+with open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en") as in_file,\
+        open("/Users/polinaprinii/Downloads/Tokenisation.txt", "w") as out_file:
+   for line in in_file:
+       words = line.split()
+       for word in words:
+           out_file.write(word)
+           out_file.write("\n")
 
 """
 5)
