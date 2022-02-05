@@ -64,6 +64,7 @@ print("The most frequent word is ", top_word, "\n")
 print("The least frequent word is ", least_word, "\n")
 
 """
+3)
 Count total number of words and total number of unique words in the corpus.
 [corpus is a collection of text; here, set of sentences of the text file is referred as corpus].
 """
@@ -79,13 +80,30 @@ unique_word_count = len(unique_words)
 print("The number of unique words in the text file is: ", unique_word_count, "\n")
 
 """
+4)
 Perform tokenisation (i.e separating punctuation from word) on the input text. 
 Write the tokenised text in an output file [for tokenisation use the standard English punctuation list]
 """
 
 import nltk
-nltk.download()
 
-word_data = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en", "r")
-nltk_tokens = nltk.word_tokenize(word_data)
-print (nltk_tokens)
+file_content = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en").read()
+tokens = nltk.word_tokenize(file_content)
+print(tokens, "\n")
+
+"""
+5)
+Perform (2) and (3) on tokenised corpus (from (4)).
+"""
+# (2)
+# Setting Counter to our tokens variables and assigning all to a variable.
+token_count = Counter(tokens)
+
+# Searching for the most common/frequent word.
+top_token_word = token_count.most_common(1)
+
+# Searching for least frequent word.
+least_token_word = token_count.most_common()[-1]
+
+print("The most frequent word from our Tokenisation problem is ", top_token_word, "\n")
+print("The least frequent word from our Tokenisation problem is ", least_token_word, "\n")
