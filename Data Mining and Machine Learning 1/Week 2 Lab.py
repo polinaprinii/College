@@ -89,16 +89,16 @@ import nltk
 
 file_content = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en").read()
 tokens = nltk.word_tokenize(file_content)
-# print(tokens) - We keep this code line commented as we do not wish for the tokens to print. 
+# print(tokens) - We keep this code line commented as we do not wish for the tokens to print.
 
-# Method 2 to perform tokenisation using a for loop and have tokenisation output to file.
-with open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en") as in_file,\
-        open("/Users/polinaprinii/Downloads/Tokenisation.txt", "w") as out_file:
-   for line in in_file:
-       words = line.split()
-       for word in words:
-           out_file.write(word)
-           out_file.write("\n")
+# # Method 2 to perform tokenisation using a for loop and have tokenisation output to file.
+# with open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en") as in_file,\
+#         open("/Users/polinaprinii/Downloads/Tokenisation.txt", "w") as out_file:
+#    for line in in_file:
+#        words = line.split()
+#        for word in words:
+#            out_file.write(word)
+#            out_file.write("\n")
 
 """
 5)
@@ -111,8 +111,48 @@ token_count = Counter(tokens)
 # Searching for the most common/frequent word.
 top_token_word = token_count.most_common(1)
 
+# (3)
 # Searching for least frequent word.
 least_token_word = token_count.most_common()[-1]
 
 print("The most frequent word from our Tokenisation problem is ", top_token_word, "\n")
 print("The least frequent word from our Tokenisation problem is ", least_token_word, "\n")
+
+"""
+Perform lowercasing on the corpus text. Write the lowercased text in an output file.
+"""
+from itertools import chain
+from glob import glob
+
+lower_file = open('/Users/polinaprinii/Downloads/Tokenisation.txt', 'r')
+
+lower_lines = [line.lower() for line in lower_file]
+with open('/Users/polinaprinii/Downloads/LowerCase_Tokenisation.txt', 'w') as out:
+     out.writelines(sorted(lower_lines))
+
+"""
+ Perform (2) and (3) on tokenised + lowercased corpus (from (6)).
+"""
+# (2)
+# Setting Counter to our lowered tokens variables and assigning all to a variable.
+low_tokens = open("/Users/polinaprinii/Downloads/LowerCase_Tokenisation.txt", "r")
+low_token_count = Counter(low_tokens)
+
+# Searching for the most common/frequent word.
+top_low_token_word = low_token_count.most_common(1)
+
+# (3)
+# Searching for least frequent word.
+least_low_token_word = low_token_count.most_common()[-1]
+
+print("The most frequent word from our lowercase Tokenisation problem is ", top_token_word, "\n")
+print("The least frequent word from our lower case Tokenisation problem is ", least_token_word, "\n")
+
+"""
+Did you find any difference in statistics when taking three different types of corpora as an input 
+[i.e. (i) raw corpus, (ii) tokenised corpus and (iii) tokenised and lowerdcased corpus]?
+"""
+"""
+The most significant difference between the 3 corporas was the reduction of the "the" word.
+Reducing from 37,892 to 33,921
+"""
