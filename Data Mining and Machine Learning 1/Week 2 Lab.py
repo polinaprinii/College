@@ -84,12 +84,14 @@ print("The number of unique words in the text file is: ", unique_word_count, "\n
 Perform tokenisation (i.e separating punctuation from word) on the input text. 
 Write the tokenised text in an output file [for tokenisation use the standard English punctuation list]
 """
-
+# Method 1 to perform tokenisation using the NLTK library.
 import nltk
 
 file_content = open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en").read()
 tokens = nltk.word_tokenize(file_content)
+# print(tokens) - We keep this code line commented as we do not wish for the tokens to print. 
 
+# Method 2 to perform tokenisation using a for loop and have tokenisation output to file.
 with open("/Users/polinaprinii/Downloads/Lab - Python Exercise Tokeniser Problem.en-fr.en") as in_file,\
         open("/Users/polinaprinii/Downloads/Tokenisation.txt", "w") as out_file:
    for line in in_file:
