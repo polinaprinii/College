@@ -38,3 +38,13 @@ cork_rain = cork_data[:, [3]]
 print("The max ‘Most Rainfall in a Day’ in Cork recorded is: ", np.max(cork_rain), "\n")
 # Finding the average ‘Most Rainfall in a Day’ for Cork.
 print("The average ‘Most Rainfall in a Day’ in Cork recorded is: ", np.average(cork_rain), "\n")
+
+"""
+(ii) Display all unique years for which there is data in the dataset (you can use np.unique) 
+Ask the user to select a specific year and output the total number of Rain Days per month for that year 
+(that is, add up all the total number of Rain Days column for each month of that year).
+"""
+unique_years = cork_data[:,[0]]
+print("Here are all the years for which weather data was recorded for Cork city: ", "\n",
+      np.unique(unique_years))
+
