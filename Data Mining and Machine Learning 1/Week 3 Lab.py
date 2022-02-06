@@ -13,3 +13,10 @@ Please use NumPy to answer the following questions.
 The objective of this task is to familiarize yourself with the operation of NumPy.
 (There is no need to incorporate error checking).
 """
+
+"""
+(i) Print out the max ‘Most Rainfall in a Day’ value and the average ‘Most Rainfall in a Day’ value for the Cork data 
+(That is, obtain the maximum value contained in this column of data and the average value in this column of data).
+"""
+
+import numpy as np
