@@ -44,7 +44,9 @@ print("The average ‘Most Rainfall in a Day’ in Cork recorded is: ", np.avera
 Ask the user to select a specific year and output the total number of Rain Days per month for that year 
 (that is, add up all the total number of Rain Days column for each month of that year).
 """
+# Filtering numpy to only reflect 1st column aka [0] which contains Year information
 unique_years = cork_data[:,[0]]
+# Printing all unique years for which data was recorded. 
 print("Here are all the years for which weather data was recorded for Cork city: ", "\n",
       np.unique(unique_years))
 
