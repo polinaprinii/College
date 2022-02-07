@@ -64,12 +64,30 @@ def raindays():
 The month that has the highest cumulative “Total Rainfall” value across all years should be classified as the wettest. 
 Your code should print out the month and the cumulative total rainfall value for that month.
 """
-
+import calendar
 def rainfall():
-    y = input("Please input year for which we will retrieve the wettest month: ")
-    cork_wettest_month = cork_data[:,0] == int(y)
-    max_rainfall = np.max(cork_data[cork_wettest_month][:,2])
-    print("The wettest month for ",y, "is " "with a total of: ", max_rainfall, "\n")
+    wettest_month = cork_data[cork_data[:, 2] == np.max(cork_data[:, 2])]
+    print("The wettest month within out data set happened in", calendar.month_name[int(wettest_month[: ,1])], ":",
+          int(wettest_month[:, 0]), "with a value of:", int(wettest_month[:, 2]), "mm", "\n")
+#rainfall()
 
-rainfall()
 
+"""
+(iv) This question focuses on the Number of Rain days column. The user is asked to enter
+a maximum threshold value for the number of rain days. Your code should then
+output the percentage of the time (percentage of rows in the dataset) where the
+number of rain days is less than or equal to the threshold value.For example, 
+if a user enters a maximum threshold value of 6, then your code should
+output the percentage of rows where the number of rain days fell between the threshold value of 6.
+"""
+
+def countrainydays():
+    no_rain_days = input("Please enter a threshold for which we'd like to find the number of rain days: ")
+    rain_day_arr = cork_data[:,[4]]
+    count_arr = np.count_nonzero(rain_day_arr)
+    count_occ = np.count_nonzero(rain_day_arr <= int(no_rain_days))
+
+    print("The provided threshold of:", no_rain_days, "results in a", round((count_occ/count_arr) * 100),
+          "% value from the overall row count.", "\n")
+
+countrainydays()
