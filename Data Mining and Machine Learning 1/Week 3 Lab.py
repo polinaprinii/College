@@ -91,3 +91,9 @@ def countrainydays():
           "% value from the overall row count.", "\n")
 
 countrainydays()
+
+"""
+(v) Calculate the average ‘total rainfall’ value for the summer months (June, July and August) 
+and the Autumn months (Sept, Oct, Nov).
+"""
+summer_months
