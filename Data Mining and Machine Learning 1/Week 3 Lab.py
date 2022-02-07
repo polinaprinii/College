@@ -46,7 +46,19 @@ Ask the user to select a specific year and output the total number of Rain Days 
 """
 # Filtering numpy to only reflect 1st column aka [0] which contains Year information
 unique_years = cork_data[:,[0]]
-# Printing all unique years for which data was recorded. 
+# Printing all unique years for which data was recorded.
 print("Here are all the years for which weather data was recorded for Cork city: ", "\n",
       np.unique(unique_years))
+
+
+def raindays():
+    x = input("Please input year for which we will retrieve the sum of Rainy Days: ")
+    cork_rainy_days = cork_data[:,0] == int(x)
+    sum_rainy_days = np.sum(cork_data[cork_rainy_days][:,2])
+    print("The total for ", x, "is ", sum_rainy_days, "millimetres", "\n")
+
+raindays()
+
+
+
 
