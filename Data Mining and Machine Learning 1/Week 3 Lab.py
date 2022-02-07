@@ -54,11 +54,22 @@ print("Here are all the years for which weather data was recorded for Cork city:
 def raindays():
     x = input("Please input year for which we will retrieve the sum of Rainy Days: ")
     cork_rainy_days = cork_data[:,0] == int(x)
-    sum_rainy_days = np.sum(cork_data[cork_rainy_days][:,2])
-    print("The total for ", x, "is ", sum_rainy_days, "millimetres", "\n")
+    sum_rainy_days = np.sum(cork_data[cork_rainy_days][:,4])
+    print("The total Rain Days for ", x, "is ", sum_rainy_days, "\n")
 
-raindays()
+#raindays()
 
+"""
+(iii) Calculate the wettest month of the year in Cork based on the “Total Rainfall” value. 
+The month that has the highest cumulative “Total Rainfall” value across all years should be classified as the wettest. 
+Your code should print out the month and the cumulative total rainfall value for that month.
+"""
 
+def rainfall():
+    y = input("Please input year for which we will retrieve the wettest month: ")
+    cork_wettest_month = cork_data[:,0] == int(y)
+    max_rainfall = np.max(cork_data[cork_wettest_month][:,2])
+    print("The wettest month for ",y, "is " "with a total of: ", max_rainfall, "\n")
 
+rainfall()
 
