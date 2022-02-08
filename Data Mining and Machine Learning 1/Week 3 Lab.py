@@ -27,11 +27,6 @@ cork_data = np.loadtxt("/Users/polinaprinii/Downloads/CorkRainfall.txt", dtype =
 print(cork_data.shape, "\n")
 print("Here is out Cork Rainfall data: ", "\n", cork_data, "\n")
 
-# reading the Dublin data using numpy.loadtxt
-dublin_data = np.loadtxt("/Users/polinaprinii/Downloads/DublinRainfall.txt", dtype = str)
-# Performing a sanity check.
-print("Here is our Dublin Rainfall data: ", "\n", dublin_data, "\n")
-
 # We filter out Cork Rainfall data to a variable to only show the data for ‘Most Rainfall in a Day’, which is column 3.
 cork_rain = cork_data[:, [3]]
 # Finding the max ‘Most Rainfall in a Day’ for Cork.
@@ -90,10 +85,45 @@ def countrainydays():
     print("The provided threshold of:", no_rain_days, "results in a", round((count_occ/count_arr) * 100),
           "% value from the overall row count.", "\n")
 
-countrainydays()
+#countrainydays()
 
 """
 (v) Calculate the average ‘total rainfall’ value for the summer months (June, July and August) 
 and the Autumn months (Sept, Oct, Nov).
 """
-summer_months
+def totalRainfallAvg():
+    summerRainfallAvg = []
+    autumnRainfallAvg = []
+
+    for row in cork_data:
+        if row[1] == 6 or row[1] == 7 or row[1] == 8:
+            summerRainfallAvg.append(row[2])
+        if row[1] == 9 or row[1] == 10 or row[1] == 11:
+            autumnRainfallAvg.append(row[2])
+
+    avgSummerRainfall = sum(summerRainfallAvg) / len(summerRainfallAvg)
+    avgAutumnRainfall = sum(autumnRainfallAvg) / len(autumnRainfallAvg)
+
+    print("Average rainfall for summer months is ", round(avgSummerRainfall, 2), "\nAverage rainfall for autumn months is ", round(avgAutumnRainfall, 2))
+
+totalRainfallAvg()
+
+"""
+(vi) Read in the contents of the file DublinRainfall.txt into a NumPy array. 
+Append the all rows from the Dublin array to the Cork NumPy array. Calculate the average number
+of raindays for the new array and write the new NumPy array to a CSV file.
+"""
+# reading the Dublin data using numpy.loadtxt
+dublin_data = np.loadtxt("/Users/polinaprinii/Downloads/DublinRainfall.txt", dtype = float)
+# Performing a sanity check.
+print("Here is our Dublin Rainfall data: ", "\n", dublin_data, "\n")
+
+
+comb_arr = np.concatenate((cork_data, dublin_data))
+print(comb_arr.shape, "\n")
+print("Here is our combined Rainfall data: ", "\n", comb_arr)
+
+
+aver_rain_days = np.mean(comb_arr[:,[4]])
+print("The average rain days for both Cork and Dublin is: ", round(aver_rain_days))
+
