@@ -23,16 +23,19 @@ df = pd.read_csv('attacks.csv', encoding = "ISO-8859-1")
 """
 
 import pandas as pd
-
-"""
-(i)
-What location globally has the highest number of shark attacks?
-"""
-df = pd.read_csv('/Users/polinaprinii/Downloads/Lab -- attacks.csv', encoding = "ISO-8859-1")
-print(df)
-
-# Grouping data by Country to determine the location.
-
-df_group = df.groupby('Country')['Case Number'].sum().nlargest(1)
-
-print(df_group)
+# """
+# (i)
+# What location globally has the highest number of shark attacks?
+# """
+# # Importing file to pandas.
+# df = pd.read_csv('/Users/polinaprinii/Downloads/Lab -- attacks.csv', encoding = "ISO-8859-1")
+# print(df)
+#
+# # Checking data types of each column.
+# print(df.dtypes)
+#
+# # Grouping data by Country to determine the location.
+#
+# df_group = df.groupby('Country')['Case Number'].nlargest(6)
+#
+# print(df_group)
