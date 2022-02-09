@@ -64,7 +64,7 @@ def rainfall():
     wettest_month = cork_data[cork_data[:, 2] == np.max(cork_data[:, 2])]
     print("The wettest month within out data set happened in", calendar.month_name[int(wettest_month[: ,1])], ":",
           int(wettest_month[:, 0]), "with a value of:", int(wettest_month[:, 2]), "mm", "\n")
-#rainfall()
+rainfall()
 
 
 """
@@ -85,7 +85,7 @@ def countrainydays():
     print("The provided threshold of:", no_rain_days, "results in a", round((count_occ/count_arr) * 100),
           "% value from the overall row count.", "\n")
 
-#countrainydays()
+countrainydays()
 
 """
 (v) Calculate the average ‘total rainfall’ value for the summer months (June, July and August) 
