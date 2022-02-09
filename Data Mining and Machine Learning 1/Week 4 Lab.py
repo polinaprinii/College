@@ -29,13 +29,44 @@ What location globally has the highest number of shark attacks?
 """
 # Importing file to pandas.
 df = pd.read_csv('/Users/polinaprinii/Downloads/Lab -- attacks.csv', encoding = "ISO-8859-1")
-print(df)
+#print(df)
 
 # Checking data types of each column.
-print(df.dtypes)
+#print(df.dtypes)
 
 # Grouping data by Country to determine the location.
+df_group = df.groupby('Country')['Case Number'].nunique().nlargest(1)
+print("The top location globally is: ", df_group, "\n")
 
-df_group = df.groupby('Country')['Case Number'].nlargest(6)
+"""
+(ii)
+Read the shark attack dataset into a Pandas Dataframe.
+Determine the six countries that have experienced the highest number of shark attacks.
+"""
+# Determining top 6 countries with most attacks.
+df_top6 = df.groupby('Country')['Case Number'].nunique().nlargest(6)
+print("The top six countries are as below: ", "\n", df_top6, "\n")
 
-print(df_group)
+"""
+(iii)
+Modify your code to print out the six countries that have experienced the highest number of fatal shark attacks.
+"""
+# Determining top 6 countries with most fatal attacks.
+df_top_fatal = df.groupby('Country')['Fatal'].nunique().nlargest(6)
+print("The top six countries with the most fatal attacks are as below:", "\n", df_top_fatal, "\n")
+
+"""
+(iv)
+Based on the data in the Activity column are you more likely to be attacked by a shark if you are 
+“Surfing” or “Scuba Diving”
+"""
+surfing = df['Activity'].value_counts()['Surfing']
+scuba = df['Activity'].value_counts()['Scuba diving']
+print("Based on the data provided", surfing, "\n", scuba)
+
+
+"""
+(v)
+Determine from the dataset what percentage of all recorded shark attacks were fatal.
+"""
+df[df.columns['0']].count()
