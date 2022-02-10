@@ -80,3 +80,10 @@ For each individual country, print out the percentage of fatal shark attacks
 Some countries have recorded 0 fatal and non-fatal attacks. 
 Your code should only consider countries where the number of non-fatal and fatal attacks are greater than 0.
 """
+group1 = df.groupby('Country')['Fatal'].value_counts()
+print(group1)
+
+for index, value in group1.items():
+    if index[1] == 'Y':
+        print("Country ",index[0], "has a total percentage of fatal cases against world total of:", (value/total_fatal_cases) * 100, "%")
+
