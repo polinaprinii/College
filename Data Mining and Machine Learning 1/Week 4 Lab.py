@@ -72,3 +72,11 @@ Determine from the dataset what percentage of all recorded shark attacks were fa
 total_cases = df['Case Number'].count()
 total_fatal_cases = df['Fatal'].value_counts()['Y']
 print("The percentage of fatal attack are:", round((total_fatal_cases/total_cases) * 100), "%")
+
+"""
+(vi)
+For each individual country, print out the percentage of fatal shark attacks 
+(number of fatal shark attacks expressed as a percentage of the total number of shark attacks). 
+Some countries have recorded 0 fatal and non-fatal attacks. 
+Your code should only consider countries where the number of non-fatal and fatal attacks are greater than 0.
+"""
