@@ -62,11 +62,13 @@ Based on the data in the Activity column are you more likely to be attacked by a
 """
 surfing = df['Activity'].value_counts()['Surfing']
 scuba = df['Activity'].value_counts()['Scuba diving']
-print("Based on the data provided", surfing, "\n", scuba)
-
+print("Based on the data provided it is more like for a shark attack to occur whilst surfing with a total of:",
+      surfing,"attacks, against scuba diving with a total of:", scuba, "\n")
 
 """
 (v)
 Determine from the dataset what percentage of all recorded shark attacks were fatal.
 """
-df[df.columns['0']].count()
+total_cases = df['Case Number'].count()
+total_fatal_cases = df['Fatal'].value_counts()['Y']
+print("The percentage of fatal attack are:", round((total_fatal_cases/total_cases) * 100), "%")
