@@ -33,6 +33,9 @@ train_labels = train.iloc[:, -1].values
 test_features = test.iloc[:, :-1].values
 test_labels = test.iloc[:, -1].values
 
+"""
+2 Build a model using DecisionTreeRegressor and assess the accuracy.
+"""
 # Now we apply a Decision Tree Regression to assess accuracy.
 reg = DecisionTreeRegressor()
 reg = reg.fit(train_features, train_labels)
@@ -40,6 +43,9 @@ print("The Decision Tree Regression Accuracy is: ", round(reg.score(test_feature
       "which as a percentage is: ", round(reg.score(test_features, test_labels), 2) * 100, "%", "\n"
       "Please note we have not yet addressed any outliers.", "\n")
 
+""" 
+3 Identify any outliers in the training data using boxplots.
+"""
 # Now we move to identify outliers for both train and test.
 sns.boxplot(data=pd.DataFrame(train_features))
 plt.show()
@@ -47,6 +53,10 @@ plt.show()
 sns.boxplot(data=pd.DataFrame(test_features))
 plt.show()
 
+
+""" 
+4 Remove the outliers and reassess the new accuracy of the model.
+"""
 # Now we move to remove the identified outliers, we do so using z scores.
 #Removing outliers for train dataset
 z_scores_train = stats.zscore(train)
