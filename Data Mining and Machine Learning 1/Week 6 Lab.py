@@ -42,3 +42,14 @@ This is due to the fact that columns 9, 10, and 11 are identical.
 Thus the machine learning algo just pulls from those 3.
 """
 
+# Assignment 2: LR
+
+"""
+Q1
+􏰀 Use LinearRegressor to build a predictive model for Boston Housing
+data
+􏰀 Use train_test_split to split the dataset into 20% test and 80%
+training.
+"""
+
+# As the Boston Housing Data is DEPRECATED assignemnt 2 is concluded.
