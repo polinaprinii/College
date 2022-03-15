@@ -64,4 +64,12 @@ filtered_entries_test = (abs_z_scores_test < 3).all(axis=1)
 new_df_test = test[filtered_entries_train]
 
 # Now we set the features and labels to the new df's after removing the outliers.
-# For
+# For train df.
+new_train_features = new_df_train.iloc[:, :-1].values
+new_train_labels = new_df_test.iloc[:, -1].values
+
+# For test df.
+new_test_features = new_df_test.iloc[:, :-1].values
+new_test_labels = new_df_test.iloc[:, -1].values
+
+# 
