@@ -7,10 +7,10 @@ Read this data into your program.
 """
 
 # First we import all necessary Libraries:
-import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
+import seaborn as sns
 
 # Next we define our datasets
 train = pd.read_csv('/Users/polinaprinii/Downloads/Lab -- Outliers Detection/trainOutlier.csv')
@@ -38,3 +38,6 @@ print("The Decision Tree Regression Accuracy is: ", round(reg.score(test_feature
       "which as a percentage is: ", round(reg.score(test_features, test_labels), 2) * 100, "%", "\n"
       "Please note we have not yet addressed any outliers.", "\n")
 
+# Now we move to identify outliers for both train and test.
+sns.boxplot(data=pd.DataFrame(train_features))
+plt.show()
