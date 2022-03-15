@@ -61,7 +61,7 @@ z_scores_test = stats.zscore(test)
 
 abs_z_scores_test = np.abs(z_scores_test)
 filtered_entries_test = (abs_z_scores_test < 3).all(axis=1)
-new_df_test = test[filtered_entries_train]
+new_df_test = test[filtered_entries_test]
 
 # Now we set the features and labels to the new df's after removing the outliers.
 # For train df.
@@ -72,4 +72,20 @@ new_train_labels = new_df_test.iloc[:, -1].values
 new_test_features = new_df_test.iloc[:, :-1].values
 new_test_labels = new_df_test.iloc[:, -1].values
 
-# 
+# Next we check our box plot after having removed the outliers.
+sns.boxplot(data=pd.DataFrame(new_train_features))
+plt.show()
+
+sns.boxplot(data=pd.DataFrame(new_test_features))
+plt.show()
+
+""" 
+As expected much better results after having removed majority of outliers.
+A few are still present which we can eliminate further by editing the value after the less than symbol.
+"""
+
+# Lastly we re-run the regression model to evaluate if the removal of the outliers improves the accuracy level.
+new_reg = DecisionTreeRegressor()
+new_reg = new_reg.fit(train_features, train_labels)
+print("The Decision Tree Regression Accuracy after having removed the outlier is: ", round(new_reg.score(test_features, test_labels), 2),
+      "which as a percentage is: ", round(new_reg.score(test_features, test_labels), 2) * 100, "%", "\n")
