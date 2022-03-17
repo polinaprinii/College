@@ -107,6 +107,8 @@ for k in range(1, 15):
     bias_knn.append(avg_bias_E)
     var_knn.append(avg_var_E)
     error_knn.append(avg_expected_loss_E)
+
+# Visualise results:
 plt.plot(range(1, 15), error_knn, 'b', label='total_error')
 plt.plot(range(1, 15), bias_knn, 'k', label='bias')
 plt.plot(range(1, 15), var_knn, 'y', label='variance')
