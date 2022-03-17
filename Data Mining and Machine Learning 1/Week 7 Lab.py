@@ -35,14 +35,30 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 modelA = DecisionTreeClassifier()
 
 # Calculate the average expected loss, bias and variance.
-avg_expected_loss, avg_bias, avg_var = bias_variance_decomp(
+avg_expected_loss_A, avg_bias_A, avg_var_A = bias_variance_decomp(
         modelA, X_train, y_train, X_test, y_test,
         loss='0-1_loss',
         random_seed=123)
 
 # Print results:
-print('Average expected loss: %.3f' % avg_expected_loss)
-print('Average bias: %.3f' % avg_bias)
-print('Average variance: %.3f' % avg_var)
+print("Model results for the Decision Tree Classifier is as follows:")
+print('Average expected loss: %.3f' % avg_expected_loss_A)
+print('Average bias: %.3f' % avg_bias_A)
+print('Average variance: %.3f' % avg_var_A)
 
 # b) Ensemble (Bagging classifier)
+modelB = BaggingClassifier(base_estimator=modelA,
+                        n_estimators=100,
+                        random_state=123)
+
+# Calculate the average expected loss, bias and variance.
+avg_expected_loss_B, avg_bias_B, avg_var_B = bias_variance_decomp(
+        modelB, X_train, y_train, X_test, y_test,
+        loss='0-1_loss',
+        random_seed=123)
+
+# Print results:
+print("Model results for the Ensemble Bagging Classifier is as follows:")
+print('Average expected loss: %.3f' % avg_expected_loss_B)
+print('Average bias: %.3f' % avg_bias_B)
+print('Average variance: %.3f' % avg_var_B)
